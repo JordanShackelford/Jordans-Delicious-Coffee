@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
+    <style>
+        body {
+            background-color: #880000;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    
+        header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+        .fa-shopping-cart {
+            font-size: 24px;
+            color: white;
+        }
+
+        .sign-in-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .shopping-cart-button {
+        position: relative;
+        padding-right: 30px;
+    }
+
+    .shopping-cart-button div {
+  display: inline-block;
+}
+
+form {
+    display: flex;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    flex: 1;
+}
+
+button[type="submit"] {
+    background-color: #bf9986;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+    .cart-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    
+        h1 {
+            margin: 0;
+            font-size: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: cursive;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+        }
+    
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    
+        li {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            background-color: white;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        li:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.5);
+            background-color: #eee;
+        }
+    
+        a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+        }
+
+        header{
+        background-color: #666;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            }
+
+            .sign-in-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            }
+
+            .shopping-cart-button {
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            }
+
+            body {
+        background-color: #eddcd2;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #bf9986;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .header-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .fa-shopping-cart {
+        font-size: 24px;
+        color: white;
+    }
+
+    .sign-in-button {
+        background-color: #f5f5f5;
+        border: none;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .shopping-cart-button {
+        background-color: #bf9986;
+        color: white;
+    }
+
+    .shopping-cart-button:hover {
+        background-color: #d8c3af;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .shopping-cart-button:focus {
+        outline: none;
+    }
+
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: white;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+li:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.5);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-sizing: border-box;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+    </style>
+    
+</head>
+<body>
+
+	<header>
+        <h1 style="font-family: 'Pacifico', cursive;">Jordan's Delicious Coffee</h1>
+        <nav class="header-buttons">
+            <form action="#" method="get">
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+            </form>
+          <button type="button" class="sign-in-button">Sign In</button>
+          <button type="button" class="shopping-cart-button">Shopping Cart <i class="fas fa-shopping-cart"></i></button>
+        </nav>
+      </header>
+      
+
+	<main class="container">
+		<ul>
+            <li style="background-image: url('espresso.jpg'); background-size: cover;"><a href="#">Espresso</a></li>
+            <li style="background-image: url('cappuccino.jpeg'); background-size: cover;"><a href="#">Cappuccino</a></li>
+            <li style="background-image: url('latte.jpg'); background-size: cover;"><a href="#">Latte</a></li>
+            <li style="background-image: url('americano.jpg'); background-size: cover;"><a href="#">Americano</a></li>
+            <li style="background-image: url('mocha.png'); background-size: cover;"><a href="#">Mocha</a></li>
+            <li style="background-image: url('Macchiato.png'); background-size: cover;"><a href="#">Macchiato</a></li>
+            <li style="background-image: url('Flat White.jpg'); background-size: cover;"><a href="#">Flat White</a></li>
+          </ul>
+	</main>
+
+    <footer></footer>
+</body>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Coffee Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-color: #bf9986;
+            --secondary-color: #eddcd2;
+            --text-color: #333;
+            --background-color: #fff;
+            --spacing-small: 10px;
+            --spacing-medium: 20px;
+            --spacing-large: 40px;
+            --hero-height: 400px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--secondary-color) url('coffee-background.jpg') no-repeat fixed center;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-medium);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #4a2c2a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: var(--spacing-large);
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-medium);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-medium);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fa-shopping-cart {
+            font-size: 24px;
+            color: white;
+        }
+
+        button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .sign-in-button {
+            background-color: #f5f5f5;
+            color: black;
+        }
+
+        .shopping-cart-button {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        button:hover,
+        button:focus {
+            background-color: #d8c3af;
+            outline: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        form {
+            display: flex;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            flex: 1;
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0 5px 5px 0;
+        }
+
+        ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: 10px;
+            grid-gap: 20px;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            background-color: white;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            animation: fadeIn 0.5s ease-in;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            grid-row-end: span 20;
+        }
+
+        li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: pulse 1s infinite;
+        }
+
+        li:hover::after {
+            transform: scaleX(1);
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            box-sizing: border-box;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            .header-buttons {
+                margin-top: 20px;
+            }
+
+            .container {
+                padding: var(--spacing-small);
+            }
+
+            ul {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            li {
+                aspect-ratio: 3 / 4;
+            }
+
+            a {
+                font-size: 16px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        body.dark-theme {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-theme .container {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        body.dark-theme li {
+            background-color: #444;
+        }
+
+        body.dark-theme header,
+        body.dark-theme footer {
+            background-color: #444;
+            color: #fff;
+        }
+
+        body.dark-theme a {
+            color: #fff;
+        }
+
+        #themeToggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-medium);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Coffee Products</h1>
+        <div class="header-buttons">
+            <button class="sign-in-button">Sign In</button>
+            <button class="shopping-cart-button">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Our Coffee Selection</h2>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search for coffee products...">
+            <button type="submit">Search</button>
+        </form>
+
+        <ul id="product-list">
+            <li style="background-image: url('coffee1.jpg');"><a href="#">Product 1</a></li>
+            <li style="background-image: url('coffee2.jpg');"><a href="#">Product 2</a></li>
+            <li style="background-image: url('coffee3.jpg');"><a href="#">Product 3</a></li>
+            <li style="background-image: url('coffee4.jpg');"><a href="#">Product 4</a></li>
+        </ul>
+    </div>
+
+    <button id="themeToggle">Toggle Dark Theme</button>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We offer the finest selection of coffee products sourced from around the world.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: info@coffeeproducts.com</li>
+                    <li>Phone: (555) 555-5555</li>
+                    <li>Address: 123 Coffee St, Coffee City, CA 12345</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 Coffee Products. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-theme');
+            });
+        });
+
+        const productList = document.getElementById('product-list');
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+
+        const products = [
+            { id: 1, name: 'Product 1', image: 'coffee1.jpg' },
+            { id: 2, name: 'Product 2', image: 'coffee2.jpg' },
+            { id: 3, name: 'Product 3', image: 'coffee3.jpg' },
+            { id: 4, name: 'Product 4', image: 'coffee4.jpg' },
+        ];
+
+        function displayProducts(productArray) {
+            productList.innerHTML = '';
+            productArray.forEach(product => {
+                const productItem = document.createElement('li');
+                productItem.style.backgroundImage = `url('${product.image}')`;
+                productItem.innerHTML = `<a href="#">${product.name}</a>`;
+                productList.appendChild(productItem);
+            });
+        }
+
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm));
+            displayProducts(filteredProducts);
+        });
+
+        displayProducts(products);
+    </script>
+</body>
+</html>

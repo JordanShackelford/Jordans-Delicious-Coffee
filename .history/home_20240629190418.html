@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Coffee Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
+    <style>
+        body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #eddcd2;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+html {
+  font-size: clamp(1rem, 0.5rem + 1vw, 1.5rem);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #bf9986;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #4a2c2a;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.container > h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #bf9986;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fa-shopping-cart {
+    font-size: 24px;
+    color: white;
+}
+
+button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-button {
+    background-color: #f5f5f5;
+    color: black;
+}
+
+.shopping-cart-button {
+    background-color: #bf9986;
+    color: white;
+}
+
+button:hover, button:focus {
+    background-color: #d8c3af;
+    outline: 2px solid #bf9986;
+}
+
+form {
+    display: flex;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    flex: 1;
+}
+
+button[type="submit"] {
+    background-color: #bf9986;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 10px;
+    grid-gap: 20px;
+}
+
+li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    background-color: white;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    animation: fadeIn 0.5s ease-in;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    grid-row-end: span 20;
+
+}
+
+li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #bf9986;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    animation: pulse 1s infinite;
+}
+
+li:hover::after {
+    transform: scaleX(1);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-sizing: border-box;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    .header-buttons {
+        margin-top: 20px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    ul {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    li {
+        aspect-ratio: 3 / 4;
+    }
+
+    a {
+        font-size: 16px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+body.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-theme .container {
+  background-color: rgba(0,0,0,0.8);
+}
+
+body.dark-theme li {
+  background-color: #444;
+}
+
+#themeToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+footer {
+  background-color: #bf9986;
+  color: white;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+footer {
+  background-color: #8b6b5a;  /* Darker shade of brown */
+  color: #ffffff;  /* Pure white text */
+}
+
+.footer-section a {
+  color: #ffffff;  /* Ensure links are also white */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('coffee-background.jpg');  /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.hero {
+    background-image: url('hero-coffee.jpg');  /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.hero-content {
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #bf9986;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #a17f6e;
+}
+    </style>
+    
+</head>
+<body>
+
+	<header>
+        <h1 style="font-family: 'Pacifico', cursive;">Jordan's Delicious Coffee</h1>
+        <nav class="header-buttons">
+            <form action="#" method="get">
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+            </form>
+            <button type="button" class="sign-in-button" aria-label="Sign In">Sign In</button>
+            <button type="button" class="shopping-cart-button" aria-label="Shopping Cart">Shopping Cart <i class="fas fa-shopping-cart" aria-hidden="true"></i></button>
+        </nav>
+      </header>
+      
+      <section class="hero">
+        <div class="hero-content">
+            <h2>Featured: Artisan Espresso</h2>
+            <p>Experience the rich, bold flavors of our signature blend.</p>
+            <a href="#" class="cta-button">Try Now</a>
+        </div>
+    </section>
+
+	<main class="container">
+		<ul>
+            <li style="background-image: url('espresso.jpg'); background-size: cover;"><a href="#">Espresso</a></li>
+            <li style="background-image: url('cappuccino.jpeg'); background-size: cover;"><a href="#">Cappuccino</a></li>
+            <li style="background-image: url('latte.jpg'); background-size: cover;"><a href="#">Latte</a></li>
+            <li style="background-image: url('americano.jpg'); background-size: cover;"><a href="#">Americano</a></li>
+            <li style="background-image: url('mocha.png'); background-size: cover;"><a href="#">Mocha</a></li>
+            <li style="background-image: url('Macchiato.png'); background-size: cover;"><a href="#">Macchiato</a></li>
+            <li style="background-image: url('Flat White.jpg'); background-size: cover;"><a href="#">Flat White</a></li>
+          </ul>
+	</main>
+
+    <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>About Us</h3>
+            <p>Jordan's Delicious Coffee is committed to bringing you the finest coffee experience.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Products</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: info@jordanscoffee.com</p>
+            <p>Phone: (555) 123-4567</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Jordan's Delicious Coffee. All rights reserved.</p>
+        </div>
+      </footer>
+    <button id="themeToggle">Toggle Theme</button>
+      <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+      
+        // Check for saved theme preference or default to light theme
+        if (localStorage.getItem('theme') === 'dark') {
+          body.classList.add('dark-theme');
+        }
+      
+        themeToggle.addEventListener('click', () => {
+          body.classList.toggle('dark-theme');
+          
+          // Save theme preference
+          if (body.classList.contains('dark-theme')) {
+            localStorage.setItem('theme', 'dark');
+          } else {
+            localStorage.setItem('theme', 'light');
+          }
+        });
+      </script>
+      <script>
+        document.addEventListener('scroll', function() {
+            var scrolled = window.pageYOffset;
+            document.body.style.backgroundPositionY = -(scrolled * 0.1) + "px";
+        });
+        </script>
+
+<script>
+    function resizeGridItem(item) {
+        const grid = document.querySelector('ul');
+        const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+        const contentHeight = item.querySelector('a').getBoundingClientRect().height;
+        const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+        item.style.gridRowEnd = "span " + rowSpan;
+    }
+    
+    function resizeAllGridItems() {
+        const allItems = document.getElementsByTagName("li");
+        for (let x = 0; x < allItems.length; x++) {
+            resizeGridItem(allItems[x]);
+        }
+    }
+    
+    window.addEventListener("load", resizeAllGridItems);
+    window.addEventListener("resize", resizeAllGridItems);
+    </script>
+</body>
